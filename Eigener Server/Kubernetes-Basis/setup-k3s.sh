@@ -20,14 +20,14 @@ sudo mv k9s /usr/local/bin/
 rm k9s.tgz
 
 echo "==> Ingress-NGINX installieren"
-kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.10.1/deploy/static/provider/cloud/deploy.yaml
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.14.3/deploy/static/provider/cloud/deploy.yaml
 kubectl wait --namespace ingress-nginx \
   --for=condition=Ready pod \
   --selector=app.kubernetes.io/component=controller \
   --timeout=180s
 
 echo "==> Cert-Manager installieren"
-kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.14.4/cert-manager.yaml
+kubectl apply --validate=false -f https://github.com/cert-manager/cert-manager/releases/download/v1.19.3/cert-manager.yaml
 kubectl wait --namespace cert-manager \
   --for=condition=Ready pod \
   --selector=app.kubernetes.io/instance=cert-manager \
